@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Allows the entire screen to scroll when the content is too large -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <!-- Main layout containing all of the app's information -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- App title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIND YOUR WAY BACK"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Displays the current journey status -->
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="NO JOURNEY STARTED"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginTop="20dp"
+            android:background="#EEEEEE"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Starting location section -->
+        <TextView
+            android:id="@+id/startLocationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STARTING LOCATION"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/statusText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Displays the starting latitude -->
+        <TextView
+            android:id="@+id/startLatitudeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude: --"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/startLocationTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Displays the starting longitude -->
+        <TextView
+            android:id="@+id/startLongitudeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude: --"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/startLatitudeText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Current location section -->
+        <TextView
+            android:id="@+id/currentLocationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CURRENT LOCATION"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@id/startLongitudeText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Displays the current latitude -->
+        <TextView
+            android:id="@+id/currentLatitudeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude: --"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/currentLocationTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Displays the current longitude -->
+        <TextView
+            android:id="@+id/currentLongitudeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude: --"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/currentLatitudeText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Row containing the distance and heading information -->
+        <LinearLayout
+            android:id="@+id/infoRow"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/currentLongitudeText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Distance information box -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#EEEEEE">
+
+                <!-- Distance label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DISTANCE"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Displays the distance from the starting point -->
+                <TextView
+                    android:id="@+id/distanceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-- m"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+            <!-- Heading information box -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#EEEEEE">
+
+                <!-- Heading label -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HEADING"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Displays the direction the device is facing -->
+                <TextView
+                    android:id="@+id/headingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="---°"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Return direction section -->
+        <TextView
+            android:id="@+id/returnDirectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RETURN DIRECTION"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/infoRow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Displays the direction needed to return to the starting point -->
+        <TextView
+            android:id="@+id/returnDirectionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/returnDirectionTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Displays whether the user is getting closer or farther away -->
+        <TextView
+            android:id="@+id/distanceStatusText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="WAITING FOR LOCATION"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:background="#EEEEEE"
+            app:layout_constraintTop_toBottomOf="@id/returnDirectionText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Button used to start a new journey -->
+        <Button
+            android:id="@+id/startJourneyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="START JOURNEY"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/distanceStatusText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/endJourneyButton" />
+
+        <!-- Button used to end the current journey -->
+        <Button
+            android:id="@+id/endJourneyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="END JOURNEY"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@id/distanceStatusText"
+            app:layout_constraintStart_toEndOf="@id/startJourneyButton"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
